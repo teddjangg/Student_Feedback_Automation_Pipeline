@@ -1,6 +1,22 @@
 # Student Feedback Automation Pipeline
 
-## Motivation
+## 🔄 Before vs After
+
+**Before**
+- Manual feedback writing for each student
+- Time-consuming (10+ minutes per student)
+- Inconsistent tone and quality
+
+**After**
+- Automated feedback generation using LLM
+- Scalable to dozens of students in minutes
+- Consistent and structured output
+
+---
+
+## 🚨 Motivation
+Teachers, TAs! Have you ever felt that writing feedback reports individually takes too much time?
+
 This project was motivated by a real-world inefficiency observed in an academy setting, where instructors manually generated repetitive student feedback reports. I designed an automated pipeline to transform structured performance data into consistent, high-quality reports using LLMs, significantly reducing time and effort.
 
 ---
@@ -21,7 +37,7 @@ It reads structured student performance data, applies preprocessing and rule-bas
 
 ---
 
-## Pipeline Structure
+## ⚙️ Pipeline Structure
 
 Google Sheets
 ↓
@@ -75,6 +91,16 @@ Feedback Output (Excel)
 
 ---
 
+## 🧠 Prompt Design
+
+The prompt is structured into multiple components to ensure consistency and quality:
+
+- **System Prompt**: Defines the role and tone (teacher, polite and warm)
+- **Style Prompt**: Provides an example format to guide output structure
+- **Rule Prompt**: Enforces constraints such as tone, length, and required elements
+- **Data Prompt**: Injects student-specific performance data
+- **Final Instruction**: Specifies the final task
+
 ## Setup
 
 ### 1. Install dependencies
@@ -87,6 +113,16 @@ export GEMINI_API_KEY="your_api_key"
 
 ### 3. Run
 
+```python
+from feedback_pipeline import feedbackauto
+import os
+
+feedbackauto(
+    spreadsheet_name="scoring",
+    worksheet_name="AP Cal 오전",
+    api_key=os.getenv("GEMINI_API_KEY")
+)
+```
 ---
 
 ## Note
@@ -99,6 +135,7 @@ export GEMINI_API_KEY="your_api_key"
 - Direct write-back to Google Sheets
 - Async processing for faster generation
 - Web interface (Streamlit)
+- Support for flexible input formats (currently optimized for a fixed spreadsheet structure)
 
 
 
