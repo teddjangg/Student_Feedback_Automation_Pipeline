@@ -90,6 +90,26 @@ Feedback Output (Excel)
 - Optimized API usage with rate control
 
 ---
+## Edge Case Handling
+
+To ensure reliability, feedback is only generated when sufficient data is available:
+
+- Students with no valid participation data are excluded
+- Students who submitted less than half of the assignments are skipped
+
+This prevents generating unreliable or misleading feedback.
+
+### Example Logic
+
+```python
+if len(valid_hw) == 0:
+    # No participation data
+    continue
+
+if submitted_count < len(valid_hw) / 2:
+    # Insufficient submissions
+    continue
+```
 
 ## 🧠 Prompt Design
 
