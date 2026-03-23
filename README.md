@@ -40,15 +40,19 @@ It reads structured student performance data, applies preprocessing and rule-bas
 ## ⚙️ Pipeline Structure
 
 Google Sheets
+
 ↓
 
 Data Cleaning (pandas)
+
 ↓
 
 Rule-based Filtering
+
 ↓
 
 LLM Prompt Generation
+
 ↓
 
 Feedback Output (Excel)
